@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MagicKeys | Chaves Steam Oficiais</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul-escuro: #0a1f3a;
+            --azul-medio: #1a3a6a;
+            --azul-claro: #4a8fe7;
+            --gradiente-azul: linear-gradient(135deg, var(--azul-escuro), var(--azul-medio));
+            --branco: #ffffff;
+            --preto: #121212;
+            --cinza: #f5f5f5;
+            --verde: #00c853;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cinza);
+            color: var(--preto);
+            overflow-x: hidden;
+        }
+        
+        /* Navbar Estilizada */
+        .navbar {
+            background: var(--gradiente-azul);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--branco);
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar-brand i {
+            margin-right: 10px;
+            color: var(--azul-claro);
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 600;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--branco);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: var(--gradiente-azul);
+            color: var(--branco);
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-weight: 900;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn-hero {
+            background-color: var(--azul-claro);
+            color: var(--branco);
+            font-weight: 700;
+            padding: 12px 30px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(74, 143, 231, 0.4);
+        }
+        
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(74, 143, 231, 0.6);
+            background-color: var(--branco);
+            color: var(--azul-medio);
+        }
+        
+        /* Seção de Jogos */
+        .section-title {
+            font-weight: 900;
+            color: var(--azul-escuro);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 50px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 4px;
+            background: var(--azul-claro);
+            border-radius: 2px;
+        }
+        
+        .game-card {
+            background: var(--branco);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+            margin-bottom: 30px;
+            border: none;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .game-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .game-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        }
+        
+        .game-title {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            color: var(--branco);
+            font-weight: 700;
+            font-size: 1.3rem;
+            z-index: 1;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .game-body {
+            padding: 20px;
+        }
+        
+        .game-price {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--verde);
+            margin-bottom: 5px;
+        }
+        
+        .game-old-price {
+            font-size: 1rem;
+            text-decoration: line-through;
+            color: #999;
+        }
+        
+        .btn-buy {
+            background: var(--gradiente-azul);
+            color: var(--branco);
+            border: none;
+            border-radius: 6px;
+            padding: 8px 15px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s;
+            margin-top: 15px;
+        }
+        
+        .btn-buy:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(10, 31, 58, 0.3);
+        }
+        
+        /* Banner TikTok */
+        .tiktok-banner {
+            background-color: #000;
+            color: var(--branco);
+            padding: 15px 0;
+            margin: 50px 0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .tiktok-banner:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tiktok-icon {
+            font-size: 2.5rem;
+            color: #ff0050;
+            margin-right: 15px;
+        }
+        
+        .tiktok-text {
+            font-weight: 600;
+        }
+        
+        .tiktok-text span {
+            color: #25f4ee;
+            font-weight: 700;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--gradiente-azul);
+            color: var(--branco);
+            padding: 50px 0 20px;
+            margin-top: 80px;
+        }
+        
+        .footer-logo {
+            font-weight: 900;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .social-icons a {
+            color: var(--branco);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--azul-claro);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h5 {
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--azul-claro);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--branco);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0.7;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-key"></i> MagicKeys
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#games">Jogos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how">Como Funciona</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title">CHAVES STEAM COM ATÉ 80% OFF</h1>
+                    <p class="hero-subtitle">Adquira seus jogos favoritos por apenas R$39,90 cada</p>
+                    
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <img src="https://images.unsplash.com/photo-1551103782-8ab07afd45c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="img-fluid floating rounded-3" alt="Jogos Steam" style="box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Jogos -->
+    <section class="py-5" id="games">
+        <div class="container">
+            <h2 class="text-center section-title">JOGOS EM DESTAQUE</h2>
+            
+            <div class="row">
+                <!-- Forza Horizon 5 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="game-card">
+                        <div class="game-img" style="background-image: url('img/forza.jpg');">
+                            <h3 class="game-title">Forza Horizon 5</h3>
+                        </div>
+                        <div class="game-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="game-price">R$ 39,90</div>
+                                    <div class="game-old-price">R$ 249,00</div>
+                                </div>
+                                <div class="text-end">
+                                    <span class="badge bg-danger">-84%</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-buy btn-buy-forza">COMPRAR AGORA <i class="fas fa-shopping-cart ms-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Red Dead Redemption 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="game-card">
+                        <div class="game-img" style="background-image: url('img/red.png');">
+                            <h3 class="game-title">Red Dead Redemption 2</h3>
+                        </div>
+                        <div class="game-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="game-price">R$ 39,90</div>
+                                    <div class="game-old-price">R$ 199,90</div>
+                                </div>
+                                <div class="text-end">
+                                    <span class="badge bg-danger">-80%</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-buy btn-buy-rdr2">COMPRAR AGORA <i class="fas fa-shopping-cart ms-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- GTA V -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="game-card">
+                        <div class="game-img" style="background-image: url('img/gta5.png');">
+                            <h3 class="game-title">GTA V</h3>
+                        </div>
+                        <div class="game-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="game-price">R$ 39,90</div>
+                                    <div class="game-old-price">R$ 129,90</div>
+                                </div>
+                                <div class="text-end">
+                                    <span class="badge bg-danger">-69%</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-buy btn-buy-gta">COMPRAR AGORA <i class="fas fa-shopping-cart ms-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cyberpunk 2077 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="game-card">
+                        <div class="game-img" style="background-image: url('img/cyber.jpg');">
+                            <h3 class="game-title">Cyberpunk 2077</h3>
+                        </div>
+                        <div class="game-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="game-price">R$ 39,90</div>
+                                    <div class="game-old-price">R$ 199,90</div>
+                                </div>
+                                <div class="text-end">
+                                    <span class="badge bg-danger">-80%</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-buy btn-buy-cyberpunk">COMPRAR AGORA <i class="fas fa-shopping-cart ms-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner TikTok -->
+    <section class="container">
+        <a href="https://www.tiktok.com/@magickeys_?lang=pt-BR" target="_blank" class="tiktok-banner text-decoration-none">
+            <div class="tiktok-icon">
+                <i class="fab fa-tiktok"></i>
+            </div>
+            <div class="tiktok-text">
+                COMPRE DIRETAMENTE PELO NOSSO <span>TIKTOK</span><br>
+                @magickeys_
+            </div>
+        </a>
+    </section>
+
+    <!-- Como Funciona -->
+    <section class="py-5 bg-white" id="how">
+        <div class="container">
+            <h2 class="text-center section-title">COMO FUNCIONA</h2>
+            
+            <div class="row mt-5">
+                <div class="col-md-4 mb-4">
+                    <div class="text-center p-4">
+                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                            <i class="fas fa-shopping-cart fa-2x"></i>
+                        </div>
+                        <h4 class="mt-3">1. Escolha seu jogo</h4>
+                        <p>Selecione entre nossos jogos em promoção por apenas R$39,90 cada.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="text-center p-4">
+                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                            <i class="fab fa-tiktok fa-2x"></i>
+                        </div>
+                        <h4 class="mt-3">2. Acesse nosso TikTok</h4>
+                        <p>Você será direcionado para nosso perfil no TikTok para finalizar a compra.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="text-center p-4">
+                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                            <i class="fas fa-key fa-2x"></i>
+                        </div>
+                        <h4 class="mt-3">3. Receba sua chave</h4>
+                        <p>Após a confirmação do pagamento, você receberá a chave Steam via direct.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-logo">
+                        <i class="fas fa-key me-2"></i> MagicKeys
+                    </div>
+                    <p>As melhores ofertas em chaves Steam direto para você!</p>
+                    <div class="social-icons">
+                        <a href="https://www.tiktok.com/@magickeys_?lang=pt-BR" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Links Rápidos</h5>
+                        <ul>
+                            <li><a href="#home">Início</a></li>
+                            <li><a href="#games">Jogos</a></li>
+                            <li><a href="#how">Como Funciona</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Contato</h5>
+                        <ul>
+                            <li><a href="https://www.tiktok.com/@magickeys_?lang=pt-BR" target="_blank"><i class="fab fa-tiktok me-2"></i> @magickeys_</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 MagicKeys. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS e Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript Personalizado -->
+    <script>
+        // Redirecionamento para o TikTok ao clicar em comprar
+        document.querySelectorAll('.btn-buy').forEach(button => {
+            button.addEventListener('click', function() {
+                window.open('https://www.tiktok.com/@magickeys_?lang=pt-BR', '_blank');
+            });
+        });
+        
+        // Animação suave para links de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Efeito de hover nos cards de jogo
+        const gameCards = document.querySelectorAll('.game-card');
+        gameCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
