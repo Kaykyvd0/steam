@@ -249,6 +249,107 @@
             font-weight: 700;
         }
         
+        /* Seção de Galeria de Imagens */
+        .image-gallery {
+        padding: 60px 0;
+        background-color: var(--branco);
+    }
+    
+    .gallery-title {
+        font-weight: 900;
+        color: var(--azul-escuro);
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    
+    .gallery-container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+    
+    .gallery-item {
+        width: 300px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .gallery-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .gallery-img-container {
+        height: 450px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f0f0f0; /* Cor de fundo opcional */
+        overflow: hidden;
+    }
+    
+    .gallery-img {
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+        object-fit: contain; /* Alterado de 'cover' para 'contain' */
+    }
+    
+    .gallery-caption {
+        padding: 15px;
+        background: white;
+        text-align: center;
+    }
+        
+    /* Seção de Suporte */
+    .support-section {
+            background-color: var(--branco);
+            padding: 40px 0;
+            margin: 40px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .support-icon {
+            font-size: 2.5rem;
+            color: var(--azul-claro);
+            margin-bottom: 15px;
+        }
+        
+        .support-title {
+            font-weight: 700;
+            color: var(--azul-escuro);
+            margin-bottom: 20px;
+        }
+        
+        .support-text {
+            margin-bottom: 20px;
+        }
+        
+        .support-phone {
+            display: inline-block;
+            background-color: var(--azul-escuro);
+            color: var(--branco);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .support-phone:hover {
+            background-color: var(--azul-medio);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(10, 31, 58, 0.3);
+            color: var(--branco);
+            text-decoration: none;
+        }
+        
         /* Footer */
         footer {
             background: var(--gradiente-azul);
@@ -340,6 +441,15 @@
             .hero-subtitle {
                 font-size: 1.2rem;
             }
+            
+            .gallery-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .gallery-item {
+                width: 90%;
+            }
         }
     </style>
 </head>
@@ -362,7 +472,10 @@
                         <a class="nav-link" href="#games">Jogos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#how">Como Funciona</a>
+                        <a class="nav-link" href="#gallery">Galeria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#support">Suporte</a>
                     </li>
                 </ul>
             </div>
@@ -376,7 +489,6 @@
                 <div class="col-lg-6 hero-content">
                     <h1 class="hero-title">CHAVES STEAM COM ATÉ 80% OFF</h1>
                     <p class="hero-subtitle">Adquira seus jogos favoritos por apenas R$39,90 cada</p>
-                    
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
                     <img src="https://images.unsplash.com/photo-1551103782-8ab07afd45c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="img-fluid floating rounded-3" alt="Jogos Steam" style="box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);">
@@ -478,6 +590,24 @@
         </div>
     </section>
 
+    <!-- Seção da Galeria de Imagens -->
+    <section class="image-gallery" id="gallery">
+        <div class="container">
+            <h2 class="gallery-title">NOSSOS DESTAQUES</h2>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="img/Captura de tela 2025-05-03 215701.png" alt="Destaque 1" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/Captura de tela 2025-05-03 215714.png" alt="Destaque 2" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/Captura de tela 2025-05-03 215733.png" alt="Destaque 3" class="gallery-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Banner TikTok -->
     <section class="container">
         <a href="https://www.tiktok.com/@magickeys_?lang=pt-BR" target="_blank" class="tiktok-banner text-decoration-none">
@@ -491,39 +621,22 @@
         </a>
     </section>
 
-    <!-- Como Funciona -->
-    <section class="py-5 bg-white" id="how">
+    <!-- Seção de Suporte -->
+    <section class="py-5 bg-white" id="support">
         <div class="container">
-            <h2 class="text-center section-title">COMO FUNCIONA</h2>
+            <h2 class="text-center section-title">PRECISA DE AJUDA?</h2>
             
-            <div class="row mt-5">
-                <div class="col-md-4 mb-4">
-                    <div class="text-center p-4">
-                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                            <i class="fas fa-shopping-cart fa-2x"></i>
+            <div class="row mt-5 justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <div class="support-section text-center p-4">
+                        <div class="support-icon">
+                            <i class="fas fa-headset"></i>
                         </div>
-                        <h4 class="mt-3">1. Escolha seu jogo</h4>
-                        <p>Selecione entre nossos jogos em promoção por apenas R$39,90 cada.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="text-center p-4">
-                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                            <i class="fab fa-tiktok fa-2x"></i>
-                        </div>
-                        <h4 class="mt-3">2. Acesse nosso TikTok</h4>
-                        <p>Você será direcionado para nosso perfil no TikTok para finalizar a compra.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="text-center p-4">
-                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                            <i class="fas fa-key fa-2x"></i>
-                        </div>
-                        <h4 class="mt-3">3. Receba sua chave</h4>
-                        <p>Após a confirmação do pagamento, você receberá a chave Steam via direct.</p>
+                        <h3 class="support-title">SUPORTE AO CLIENTE</h3>
+                        <p class="support-text">Estamos disponíveis para tirar suas dúvidas e ajudar com qualquer problema.</p>
+                        <a href="https://wa.me/5531997609738" class="support-phone">
+                            <i class="fab fa-whatsapp me-2"></i> +55 31 99760-9738
+                        </a>
                     </div>
                 </div>
             </div>
@@ -541,6 +654,7 @@
                     <p>As melhores ofertas em chaves Steam direto para você!</p>
                     <div class="social-icons">
                         <a href="https://www.tiktok.com/@magickeys_?lang=pt-BR" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/5531997609738" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 
@@ -550,7 +664,8 @@
                         <ul>
                             <li><a href="#home">Início</a></li>
                             <li><a href="#games">Jogos</a></li>
-                            <li><a href="#how">Como Funciona</a></li>
+                            <li><a href="#gallery">Galeria</a></li>
+                            <li><a href="#support">Suporte</a></li>
                         </ul>
                     </div>
                 </div>
@@ -560,6 +675,7 @@
                         <h5>Contato</h5>
                         <ul>
                             <li><a href="https://www.tiktok.com/@magickeys_?lang=pt-BR" target="_blank"><i class="fab fa-tiktok me-2"></i> @magickeys_</a></li>
+                            <li><a href="https://wa.me/5531997609738" target="_blank"><i class="fab fa-whatsapp me-2"></i> +55 31 99760-9738</a></li>
                         </ul>
                     </div>
                 </div>
